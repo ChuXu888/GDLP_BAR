@@ -40,7 +40,7 @@ public class MainAlgorithm {
     public static int countOfProperty03 = 0;  //回溯搜索时性质3使用次数
     public static int countOfProperty04 = 0;  //回溯搜索时性质4使用次数
     public static int countOfConflictList = 0;  //回溯搜索时ConflictList生效次数
-    public static int countOfUpLowBound = 0;  //回溯搜索时ConflictList生效次数
+    public static int countOfUpLowBound = 0;  //回溯搜索时上下界剪枝生效次数
 
     public static void main(String[] args) throws Exception {
         //记录程序结束时间
