@@ -246,4 +246,18 @@ public class Properties {
             tempList.remove(curBestFacility);
         }
     }
+
+    //性质11：由性质10可知，MMDP的任一可行解中至少包含(a+1)个备选点，
+    //将V中所有设施备选点按照成本升序排序，若排序后前(a+1)个备选点的成本之和 ，则该问题无解。
+    public static boolean property11() {
+        //按成本降序排序
+        List<Facility> tempList = V.stream().sorted(Comparator.comparing(Facility::getCi)).collect(Collectors.toList());
+        //取前a+1个备选点的和相加
+        double sum = 0;
+        int count = a + 1;
+        for (int i = 0; i < count; i++) {
+            sum += tempList.get(i).getCi();
+        }
+        return sum > C;
+    }
 }
