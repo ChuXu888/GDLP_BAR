@@ -79,16 +79,22 @@ public class MainAlgorithm {
         //Step4：根据性质10确定该问题a的取值；
         Properties.property10();
 
-        //Step5：调用下界子算法，获取问题的下界b；
+        //Step5：根据性质11判定该问题是否无解；
+        if (Properties.property11()) {
+            System.out.println("(a+1)个成本最小的备选点的总成本都已经超过成本上限C了，此时无解！");
+            System.exit(0);
+        }
+
+        //Step6：调用下界子算法，获取问题的下界b；
         b = LowerBoundAlgorithm.lowerBoundAlgorithm();
         System.out.println("下界子算法得到的当前最优值为b = " + b);
         System.out.println("下界子算法得到的当前最好解为S_best = ");
         S_best.forEach(System.out::println);
 
-        //Step6：调用降阶子算法，对问题进行降阶；
+        //Step7：调用降阶子算法，对问题进行降阶；
         OrderReductionAlgorithm.orderReductionAlgorithm();
 
-        //Step7：调用回溯子算法Backtrack(1)，获取问题的最优解S*=S_best。
+        //Step8：调用回溯子算法Backtrack(1)，获取问题的最优解S*=S_best。
         initialList();
         BackTrackingAlgorithm.backTrackingAlgorithm();
 
